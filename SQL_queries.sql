@@ -42,9 +42,7 @@ FROM sales;
 
 ALTER TABLE sales ADD COLUMN time_of_day VARCHAR(20);
 
--- For this to work turn off safe mode for update
--- Edit > Preferences > SQL Edito > scroll down and toggle safe mode
--- Reconnect to MySQL: Query > Reconnect to server
+
 UPDATE sales
 SET time_of_day = (
 	CASE
@@ -78,9 +76,7 @@ ALTER TABLE sales ADD COLUMN month_name VARCHAR(10);
 UPDATE sales
 SET month_name = MONTHNAME(date);
 
--- --------------------------------------------------------------------
--- ---------------------------- Generic ------------------------------
--- --------------------------------------------------------------------
+
 -- How many unique cities does the data have?
 SELECT 
 	DISTINCT city
@@ -162,8 +158,6 @@ FROM sales
 GROUP BY product_line
 ORDER BY avg_tax DESC;
 
-
--- Fetch each product line and add a column to those product 
 -- line showing "Good", "Bad". Good if its greater than average sales
 
 SELECT 
@@ -206,12 +200,7 @@ FROM sales
 GROUP BY product_line
 ORDER BY avg_rating DESC;
 
--- --------------------------------------------------------------------
--- --------------------------------------------------------------------
 
--- --------------------------------------------------------------------
--- -------------------------- Customers -------------------------------
--- --------------------------------------------------------------------
 
 -- How many unique customer types does the data have?
 SELECT
@@ -304,12 +293,7 @@ GROUP BY day_name
 ORDER BY total_sales DESC;
 
 
--- --------------------------------------------------------------------
--- --------------------------------------------------------------------
 
--- --------------------------------------------------------------------
--- ---------------------------- Sales ---------------------------------
--- --------------------------------------------------------------------
 
 -- Number of sales made in each time of the day per weekday 
 SELECT
@@ -322,6 +306,7 @@ ORDER BY total_sales DESC;
 -- Evenings experience most sales, the stores are 
 -- filled during the evening hours
 
+
 -- Which of the customer types brings the most revenue?
 SELECT
 	customer_type,
@@ -329,6 +314,7 @@ SELECT
 FROM sales
 GROUP BY customer_type
 ORDER BY total_revenue;
+
 
 -- Which city has the largest tax/VAT percent?
 SELECT
@@ -346,5 +332,4 @@ FROM sales
 GROUP BY customer_type
 ORDER BY total_tax;
 
--- --------------------------------------------------------------------
--- --------------------------------------------------------------------
+-- end
